@@ -35,48 +35,11 @@ void insertBoard(){
 void findCrossroad(u_int32_t board[20][20], u_int32_t dimention){
     u_int32_t firstDimention, secondDimention;
     u_int32_t newDimention;
-
     cout << "Enter coordinates:" << endl;
     cin >> firstDimention >> secondDimention;
 
     board[firstDimention][secondDimention] = 1;
 
-    for(int i = firstDimention, j = secondDimention; i <= dimention, j >= 0; i++, j--)
-        board[i][j] = 1;
-
-    for(int i = firstDimention, j = secondDimention; i <= dimention, j <= dimention; i++, j++)
-        board[i][j] = 1;
-
-    for(int i = firstDimention, j = secondDimention; i >=0, j <= dimention; i--, j++)
-        board[i][j] = 1;
-
-    for(int i = firstDimention, j = secondDimention; i >=0, j >= 0; i--, j--)
-        board[i][j] = 1;
-
-
-    printBoard(board, dimention);
-}
-
-void printBoard(u_int32_t board[20][20], u_int32_t dimention){
-    u_int32_t outputD = 0;
-    cout << "Output:"<<endl;
-    for(int i = 0; i < dimention; i++){
-        for(int j = dimention -1; j >= 0; j--){
-            cout << board[i][j];
-        }
-        cout << '\n';
-    }
-l
-    for(int i = 0; i < dimention; i++){
-        for(int j = dimention -1; j >= 0; j--)
-            if(board[i][j] == 1)
-                outputD += pow(2,j);
-        cout << outputD << endl;
-        outputD = 0;
-    }
- }
-
-/*
     if(firstDimention == secondDimention){        //Main diagonal
         for(int i = 0; i < dimention; i++){
             for(int j = dimention -1; j >= 0; j--){
@@ -144,4 +107,24 @@ l
             }
         }
     }
-*/
+
+
+
+    printBoard(board, dimention);
+}
+
+void printBoard(u_int32_t board[20][20], u_int32_t dimention){
+    u_int32_t outputD = 0;
+    for(int i = 0; i < dimention; i++){
+        for(int j = dimention -1; j >= 0; j--){
+            if(board[i][j] == 1)
+            {
+                outputD += pow(2, j);
+            }
+
+        }
+        cout << outputD << '\n';
+    }
+}
+
+
